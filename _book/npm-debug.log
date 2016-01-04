@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'publish' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 verbose run-script [ 'prepublish', 'publish', 'postpublish' ]
+5 info lifecycle blog@1.0.0~prepublish: blog@1.0.0
+6 verbose lifecycle blog@1.0.0~prepublish: unsafe-perm in lifecycle true
+7 verbose lifecycle blog@1.0.0~prepublish: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/andreasmoller/repos/blog/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.npm:/Users/andreasmoller/.rvm/bin
+8 verbose lifecycle blog@1.0.0~prepublish: CWD: /Users/andreasmoller/repos/blog
+9 silly lifecycle blog@1.0.0~prepublish: Args: [ '-c', 'npm run build' ]
+10 silly lifecycle blog@1.0.0~prepublish: Returned: code: 0  signal: null
+11 info lifecycle blog@1.0.0~publish: blog@1.0.0
+12 verbose lifecycle blog@1.0.0~publish: unsafe-perm in lifecycle true
+13 verbose lifecycle blog@1.0.0~publish: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/andreasmoller/repos/blog/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.npm:/Users/andreasmoller/.rvm/bin
+14 verbose lifecycle blog@1.0.0~publish: CWD: /Users/andreasmoller/repos/blog
+15 silly lifecycle blog@1.0.0~publish: Args: [ '-c', './bin/publish' ]
+16 silly lifecycle blog@1.0.0~publish: Returned: code: 126  signal: null
+17 info lifecycle blog@1.0.0~publish: Failed to exec publish script
+18 verbose stack Error: blog@1.0.0 publish: `./bin/publish`
+18 verbose stack Exit status 126
+18 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+18 verbose stack     at emitTwo (events.js:87:13)
+18 verbose stack     at EventEmitter.emit (events.js:172:7)
+18 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+18 verbose stack     at emitTwo (events.js:87:13)
+18 verbose stack     at ChildProcess.emit (events.js:172:7)
+18 verbose stack     at maybeClose (internal/child_process.js:818:16)
+18 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+19 verbose pkgid blog@1.0.0
+20 verbose cwd /Users/andreasmoller/repos/blog
+21 error Darwin 15.0.0
+22 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "publish"
+23 error node v5.0.0
+24 error npm  v3.3.6
+25 error code ELIFECYCLE
+26 error blog@1.0.0 publish: `./bin/publish`
+26 error Exit status 126
+27 error Failed at the blog@1.0.0 publish script './bin/publish'.
+27 error This is most likely a problem with the blog package,
+27 error not with npm itself.
+27 error Tell the author that this fails on your system:
+27 error     ./bin/publish
+27 error You can get their info via:
+27 error     npm owner ls blog
+27 error There is likely additional logging output above.
+28 verbose exit [ 1, true ]
