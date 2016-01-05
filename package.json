@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "gitbook install",
+    "watch": "npm run prebuild && gitbook serve",
+    "build": "rm -rf _book && gitbook build",
+    "publish": "./bin/publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cullophid/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cullophid/blog/issues"
+  },
+  "homepage": "https://github.com/cullophid/blog#readme"
+}
