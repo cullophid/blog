@@ -59,7 +59,6 @@ class Ghost {
 ```
 now we refactor the code, and extract a super class:
 
-
 ```js
 class Actor {
   constructor() {
@@ -98,6 +97,7 @@ As projects grow we repeat this pattern of refactoring again and again. These re
 Lets try the functional version:
 
 ```js
+
 const ghostFactory = (color) => ({color, x:0, y:0})
 const pacmanFactory = () => ({score:0 , x:0, y:0})
 const move = (actor, x, y) => Object.assign({}, actor, {x, y})
@@ -112,25 +112,28 @@ inky = move(inky, 1, 2)
 ```
 
 One of the great things about our new move function is that it is not limited to actors. We can use it on anything that has x and y coordinates. By separating function from the data it operates on, reusing code is much simpler. We also don't have to refactor our code when we add the ghosts, because the move function works the same way for every object passed to it.
-Because our actors are simple hashmaps we get a lot of functionality for free. Lets say we want to save our game:
+
+
+## Separating data and functionality
+One of the core principles in functional programming is the separation of data and functionality. This means that we can use the built in datatypes instead of creating new ones. In stead of creating a new Actor object we can just use a hashmap with an x and y property.
+
+Let go back to our Pacman game. Because our actors are simple hashmaps we get a lot of functionality for free. Lets say we want to save our game:
 
 ```js
-const game = {
-  pacman,
-  ghosts: [inky, blinky, pinky, clyde]
-}
 
-localStorage.setItem('myGame', game)
+localStorage.setItem('myGame', {
+  pacman,
+  ghosts,
+})
 
 ```
 If you want to do the same in the OO example you need a way to recreate the objects from the serialized data.
-
 
 ## Polymorphism
 Yes functional programming has polymorphism too and its much more powerful than its OO cousin.
 A great example of this is the map function.
 
-probably the greatest example of a polymorphic function is `reduce`. The reduce function can be used in in endless ways and almost all list operations can be implemented with reduce.
+The greatest example of a polymorphic higher order function is `reduce`. The reduce function can be used in in endless ways and almost all list operations can be implemented with reduce.
 
 ```js
 const max = list => reduce(Math.max, 0, list)
@@ -149,6 +152,38 @@ const pluck = (prop, list) => map(e => e[prop], list)
 const every = (f, list) => reduce((x, y) => x && f(e), true, list)
 const any = (f, list) => reduce((x, y) => x || f(e), false, list)
 ```
+Because reduce takes a function as a the first argument, we are expanding the usability of the function. This type of polymorphism is a lot more powerful than OO polymorphism because the only assumption we are making about the data is that it is iterable.
+
+## Immutability
+Immutable data is data that cannot change. This can sound very restrictive at first, but we are already very used to working with immutable data. Numbers, Strings and Booleans are all immutable.
+The big difference is that instead of writing:
+
+```js
+const move = (actor, x, y) => {
+  actor.x = x
+  actor.y = y
+}  
+
+move(pacman, 1, 2)
+```
+we write
+```js
+const move = (actor, x, y) => Object.assign({}, actor, {x, y})
+
+pacman = move(pacman, 1, 2)
+```
+
+The difference between the two examples is that the first one mutates the object the pacman variable is pointing to. This means that we are effectively also changing any other variable pointing to that object. This can be a problem in some cases. Lets say we want to store the game history.
+
+```js
+const assign = (prop, value, obj) => Object.assign({}, obj, {[prop]: value})
+history.push({
+  pacman,
+  ghosts
+})
+pacman = move(model.pacman, 1, 2)
+```
+
 
 ## Testing
 One of the first eureka moments when writing functional javascript is how simple testing becomes. Because Pure functions have no side effects, and no dependencies there is nothing to stub. Say goodbye to `before` and `after` your unit tests have no setup or teardown step. All your tests are independant, because the functions you are testing are independant.
@@ -166,11 +201,5 @@ it('should return `undefined` if list is empty', () => {
 })
 ```
 
-
 ## Putting and end to the tyrany of `this`
-`this` is arguably one of the worst things about javascript. It
-
-## OO Javascript is broken
-
-
-## This is javascript of cause we are gonna cheat
+`this` is arguably one of the worst things about javascript. You litterally don't have to use it any more!!!
