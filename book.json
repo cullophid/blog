@@ -2,5 +2,8 @@
   "gitbook": "2.5.2",
   "structure": {
     "summary": "SUMMARY.md"
+  },
+  "styles": {
+    "website": "./css/style.css"
   }
 }

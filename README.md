@@ -2,4 +2,4 @@
 
 This is the Evilcorp blog, a collection of blogposts by Andreas Møller.
 
-Click on a title on the left to start reading.
+Click on a post on the left to start reading.
